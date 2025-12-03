@@ -24,7 +24,7 @@ What began as a **serverless AWS ETL pipeline** to archive ephemeral Spotify Top
 ## ✨ Key Highlights
 
 - 🎯 **Prediction Accuracy:** R² improved from **0.19 → 0.51** (3× gain)
-- 📊 **Scale:** 80,000+ tracks across multiple genres
+- 📊 **Scale:** 89,000+ tracks across multiple genres
 - ☁️ **Cloud-Native:** Fully serverless AWS ETL pipeline
 - 🤖 **AI Stack:** XGBoost + Sentence-BERT embeddings
 - 🎨 **UX:** Real-time interactive Streamlit dashboard with **5 analytical modules**

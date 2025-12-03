@@ -6,159 +6,318 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
-**SpotFusion+** is an end-to-end data product that bridges the gap between **Cloud Data Engineering** and **Advanced Machine Learning**. 
-
-What began as a serverless ETL pipeline on AWS to archive ephemeral Spotify charts has evolved into a full-stack predictive intelligence engine. The system automates data ingestion, warehousing, and leverages **XGBoost** and **Semantic Embeddings** to predict song popularity and generate context-aware recommendations.
-
----
-
-## 📑 Table of Contents
-- [📖 Project Overview](#-project-overview)
-- [🏗️ System Architecture](#%EF%B8%8F-system-architecture)
-    - [Phase I: AWS Data Engineering](#phase-i-aws-data-engineering)
-    - [Phase II: AI & Analytics](#phase-ii-ai--analytics)
-- [📂 Repository Structure](#-repository-structure)
-- [🧠 Key Technical Innovations](#-key-technical-innovations)
-- [🚀 Installation & Setup](#-installation--setup)
-- [📊 Experimental Results](#-experimental-results)
-- [📱 Dashboard Showcase](#-dashboard-showcase)
-- [👨‍💻 Author](#-author)
-
 ---
 
 ## 📖 Project Overview
 
-**The Challenge:** 
-Spotify's *Top 50* charts are volatile. Data is overwritten weekly, destroying historical trends. Furthermore, raw audio features (like tempo or energy) are notoriously poor predictors of a song's commercial success ($R^2 \approx 0.19$).
+**SpotFusion+** is an end-to-end data product that bridges **Cloud-Native Data Engineering** with **Advanced Machine Learning and Semantic AI**.
 
-**The Solution:**
-1.  **Data Lake:** A serverless AWS pipeline (Lambda/Glue) to build a persistent history of trends.
-2.  **Contextual Intelligence:** Engineering features like **Artist Reputation** (Target Encoding) and **Lyrical Sentiment** (NLP).
-3.  **Predictive Modeling:** A tuned XGBoost regressor ($R^2 \approx 0.51$).
-4.  **Semantic Discovery:** A vector-based recommender system deployed via Streamlit.
+What began as a **serverless AWS ETL pipeline** to archive ephemeral Spotify Top 50 charts evolved into a **full-stack predictive intelligence system** that:
+
+- Builds a persistent historical data lake
+- Predicts song popularity using contextual features
+- Generates semantic, context-aware music recommendations
+- Presents insights via an interactive Streamlit dashboard
 
 ---
 
-## 🏗️ System Architecture
+## ✨ Key Highlights
+
+- 🎯 **Prediction Accuracy:** R² improved from **0.19 → 0.51** (3× gain)
+- 📊 **Scale:** 80,000+ tracks across multiple genres
+- ☁️ **Cloud-Native:** Fully serverless AWS ETL pipeline
+- 🤖 **AI Stack:** XGBoost + Sentence-BERT embeddings
+- 🎨 **UX:** Real-time interactive Streamlit dashboard with **5 analytical modules**
+
+---
+
+## 📑 Table of Contents
+
+- [🎯 Problem Statement](#-problem-statement)
+- [🏗️ Solution Architecture](#-solution-architecture)
+  - [Phase I: AWS Data Engineering](#phase-i-aws-data-engineering)
+  - [Phase II: AI & Analytics](#phase-ii-ai--analytics)
+- [🚀 Key Innovations](#-key-innovations)
+- [📂 Repository Structure](#-repository-structure)
+- [🔬 Technical Deep Dive](#-technical-deep-dive)
+- [📊 Results & Performance](#-results--performance)
+- [🎨 Dashboard Features](#-dashboard-features)
+- [⚙️ Installation & Setup](#️-installation--setup)
+- [🔧 Usage Guide](#-usage-guide)
+- [🌟 Key Findings](#-key-findings)
+- [🛠️ Technologies Used](#️-technologies-used)
+- [📈 Future Enhancements](#-future-enhancements)
+- [👨‍💻 Author](#-author)
+
+---
+
+## 🎯 Problem Statement
+
+### The Challenge
+- Spotify Top 50 charts are **overwritten weekly**, destroying historical trends
+- Raw audio features (tempo, energy) are **weak predictors** of success  
+  *(Baseline performance: R² ≈ 0.19)*
+
+### The Gap
+- No persistent archival mechanism
+- Limited contextual intelligence (artist influence, genre momentum)
+- No semantic understanding for music recommendation
+
+---
+
+## 🏗️ Solution Architecture
+
+
+
+---
 
 ### Phase I: AWS Data Engineering
-A purely serverless, event-driven ETL pipeline.
 
-
-### Architecture Diagram
 ![Architecture Diagram](https://github.com/kushankkwal/spotify-end-to-end-data-engineering-project/blob/main/Spotify_Data_Pipeline%20.jpeg)
 
-### About Dataset/API
-This API contains information about music artists, albums, and songs - [Spotify API](https://developer.spotify.com/documentation/web-api)
+A **purely serverless, event-driven ETL pipeline**:
 
-### Services Used
-1. **Ingestion:** AWS CloudWatch triggers Lambda weekly to hit Spotify APIs.
-2. **S3 (Simple, Storage, Service):** Amazon S3 (Simple Storage Service) is a highly scalable object storage service that can store and retrieve any amount of data from anywhere on the web. It is commonly used to store and distribute large media files, data backups, and static website files.
-3. **AWS Lambda:** AWS Lambda is a serverless computing service that lets you run your code without managing servers. You can use lambda to run the code in response to events like changes in S3, DynamoDB, or other Amazon Web Services.
-4. **CloudWatch:** Amazon CloudWatch is a monitoring service for AWS resources and the applications you run on them. You can use ClooudWatch to collect and track metrics, collect and monitor log files, and set alarms.
-5. **Glue Crawler:** AWS Glue Crawler is a fully managed service that automatically crawls your data sources, identifies the data format, and infers schemas to create an AWS Glue Data Catalog.
-6. **Data Catalog:** AWS Glue Data Catalog is a fully managed service that automatically crawls your data sources, identifies the data formats, and infers schemas to create an AWS Glue Data Catalog with other Amazon Web Services, such as Athena.
-7. **Amazon Athena:** Amazon Athena is an Interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. You can use Athena to analyze data in your Gllue Catalog or other S3 Buckets.
+- 🔄 **Ingestion:** CloudWatch triggers Lambda to pull Spotify APIs
+- 💾 **Storage:** S3-based data lake (raw → processed → warehouse)
+- 🔧 **Processing:** Lambda-based transformations & Parquet conversion
+- 📋 **Cataloging:** AWS Glue Crawlers for schema discovery
+- 🔍 **Analytics:** Amazon Athena for SQL-based querying
 
-### Project Execution Flow
-Extract Data from API -> Lambda Trigger (Every 1 Hour) -> Run extract Code -> Store Raw Data -> Trigger Transformation Function -> Transform Data and Load it -> Query using Athena.
+**Execution Flow**  
+Spotify API → Lambda (Extract) → S3 Raw → Lambda (Transform) → S3 Warehouse → Glue Catalog → Athena
+
+---
 
 ### Phase II: AI & Analytics
-A local high-performance modeling pipeline.
 
-*   **Featurization:** Target Encoding, VADER Sentiment Analysis.
-*   **Modeling:** XGBoost Regressor (1000 estimators).
-*   **Unsupervised:** Sentence-BERT Embeddings + UMAP dimensionality reduction.
+A high-performance local ML pipeline:
+
+- 🎛️ **Featurization**
+  - Target Encoding (Artist Reputation)
+  - VADER Sentiment Analysis on track titles
+- 🤖 **Modeling**
+  - XGBoost Regressor (1000 estimators)
+- 🌌 **Unsupervised Learning**
+  - Sentence-BERT embeddings
+  - UMAP dimensionality reduction
+  - HDBSCAN clustering
+
+---
+
+## 🚀 Key Innovations
+
+### 1. Target Encoding
+✅ Result: **R² improved from 0.19 → 0.51**
+
+---
+
+### 2. Hybrid Semantic Embeddings
+Tracks are encoded as:
+
+"Track Name - Artist Name [Genre Context]"
+
+Using **Sentence-BERT**, enabling semantic “vibe” matching well beyond keyword similarity.
+
+---
+
+### 3. The Music Galaxy
+- 384 vector embeddings projected into **3D semantic space**
+- Reveals natural clusters of genres and moods
+- Powers interactive discovery
 
 ---
 
 ## 📂 Repository Structure
 
-/ (Root)\
-├── aws_scripts/                  # Phase 1: Cloud Logic\
-│   ├── lambda_extract.py         # Spotify API Extraction\
-│   └── lambda_transform.py       # Data Cleaning & Parquet Conversion\
+
+SpotFusion+/\
+├── aws_pipeline/ # Phase I: AWS Infrastructure\
+│ ├── lambda_extract.py\
+│ ├── lambda_transform.py\
+│ └── README.md\
 │\
-├── spotfusion_plus/              # Phase 2: AI & Dashboard Core\
-│   ├── data/                     # Local datasets\
-│   ├── datawarehouse/            # Processed Parquet artifacts\
-│   ├── models/                   # Trained .joblib models & .npy embeddings\
-│   ├── scripts/                  # The Core Pipeline\
-│   │   ├── 1_etl_load.py         # Local ingestion bridge\
-│   │   ├── 2_featurize.py        # Feature Engineering (Target Encoding + VADER)\
-│   │   ├── 3_train_popularity.py # XGBoost Training Logic\
-│   │   ├── 4_embeddings.py       # SBERT Vector Generation\
-│   │   └── 5_cluster_graph.py    # UMAP & HDBSCAN Clustering\
-│   ├── streamlit_app/\
-│   │   └── app.py                # The Interactive Dashboard\
-│   └── visualizations/           # Plotting scripts (SHAP, Network Graph)\
+├── data/\
+│ ├── raw/\
+│ └── processed/\
 │\
-└── assets/                       # Documentation Images\
+├── models/\
+│ ├── pop_model.joblib\
+│ ├── song_embeddings.npy\
+│ └── clustering/\
+│\
+├── scripts/ # Phase II: AI Pipeline\
+│ ├── etl_load.py\
+│ ├── featurize.py\
+│ ├── train_popularity.py\
+│ ├── embeddings_recommender.py\
+│ └── cluster_graph.py\
+│\
+├── dashboard/\
+│ ├── app.py\
+│\
+├── reports/\
+│ ├── xgb_feature_importance.png\
+│ ├── dashboard_ui.png\
+│ ├── cluster_plot_3d.png\
+│ └── artist_network.png\
+│ └── Spotfusion_Final_Report.pdf\
+│ └── shap_summary.png\
+│ └── tiered_violin.png         #Model Performance
+
+
+
 
 ---
 
-🧠 Key Technical Innovations
-Proved that Artist Reputation (captured via Target Encoding) is a 3x stronger predictor of popularity than audio features.
-Result: Improved 
-R
-2
-R 
-2
- 
- from 0.19 to 0.51.
-Hybrid Embeddings:
-Instead of simple metadata matching, we use Sentence-BERT to encode:
-"Track Name - Artist Name [Genre Context]"
-This allows the recommender to find songs that share a semantic "vibe."
-The "Music Galaxy":
-Projecting 384-dimensional vector embeddings into 3D space using UMAP to visualize clusters of musical genres.
-🚀 Installation & Setup
-Prerequisites
-Python 3.8+
-Spotify Developer Credentials
-1. Clone & Install
-code
-Bash
+## 🔬 Technical Deep Dive
+
+### Feature Engineering – Target Encoding
+
+Sᵢ = (nᵢ × μᵢ + m × μ_global) / (nᵢ + m)
+
+Where:
+- nᵢ = number of tracks by artist i
+- μᵢ = average popularity of artist i
+- m = smoothing factor (e.g., 10)
+- μ_global = global mean popularity
+
+---
+
+### NLP Sentiment Analysis
+- **VADER** sentiment on track titles
+- Compound scores ∈ `[-1, +1]`
+
+---
+
+### Model Architecture
+- **Algorithm:** XGBoost Regressor
+- **Parameters:**  
+  `n_estimators=1000`, `learning_rate=0.02`, `max_depth=7`
+- **Split:** Time-aware 90/10 train-test
+
+---
+
+### Embedding Strategy
+
+
+semantic_text = f"{track_name} - {artist_name} [Genre: {genre}]"
+embeddings = sbert_model.encode(semantic_text)
+
+## 📊 Results & Performance
+
+| Metric | SpotFusion+ |
+|-------|-------------|
+| R²    | 0.51 |
+| RMSE  | 12.84 |
+| MAE   | 8.92 |
+
+
+Feature Importance
+Artist & Genre encoding dominate audio features
+
+
+## 🎨 Dashboard Features
+
+
+Module 1: 🤖 AI Recommender
+Semantic similarity search
+Context-aware playlists
+
+
+Module 2: 🌌 3D Music Galaxy
+Interactive 3D UMAP visualization
+
+
+
+Module 3: 📈 Market Analytics
+Trend analysis
+
+Feature correlations
+
+Module 4: 🔬 Research Outcomes
+Model metrics
+
+
+Module 5: 📄 Report Export
+Auto-generated PDFs
+Executive-ready summaries
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+- Python 3.9+
+- Spotify Developer Credentials
+- AWS Account (optional for Phase I)
+
+---
+
+### 1️⃣ Clone Repository
+
 git clone https://github.com/Mohnish3/spotify-end-to-end-data-engineering-project.git
-cd spotify-end-to-end-data-engineering-project
+cd SpotFusion-Plus
+
+2️⃣ Install Dependencies
 pip install -r requirements.txt
-# (Ensure pandas, xgboost, spotipy, streamlit, plotly, sentence-transformers are installed)
-2. Run the AI Pipeline
-Navigate to the project folder:
-code
-Bash
-cd spotfusion_plus
-Run the scripts in order to build the data artifacts:
-code
-Bash
-python scripts/1_etl_load.py             # Ingest Data
-python scripts/2_featurize.py            # Generate Features
-python scripts/3_train_popularity.py     # Train XGBoost
-python scripts/4_embeddings_recommender.py # Generate Vectors
-python scripts/5_cluster_graph.py        # Cluster Data
-3. Launch Dashboard
-code
-Bash
-streamlit run streamlit_app/app.py
-📊 Experimental Results
-The model successfully identifies the drivers of streaming success.
-Metric	Baseline (Audio Only)	SpotFusion+ (Context-Aware)
-R² Score	0.19	0.51
-RMSE	16.43	12.84
-Feature Importance:
-As shown below, Artist and Genre encoding (Context) vastly outperform Tempo/Energy (Content).
-![alt text](assets/xgb_feature_importance.png)
-📱 Dashboard Showcase
-The SpotFusion+ Dashboard serves as the final product, integrating all research outputs.
-1. Context-Aware Recommender
-Generates playlists based on vector similarity and visualizes "Audio DNA" using Spider Plots.
-![alt text](assets/dashboard_ui.png)
-2. The Music Galaxy (3D)
-Interactive UMAP projection of 80,000+ songs.
-![alt text](assets/cluster_galaxy.png)
-3. Artist Network Analysis
-Visualizing collaboration hubs within the industry.
-![alt text](assets/artist_network.png)
-👨‍💻 Author
-Mohnish P Nair
-M.Tech in Data Engineering, IIT Jodhpur
+
+3️⃣ AWS Configuration (Optional – Phase I)
+aws configure
+
+export SPOTIFY_CLIENT_ID="your_id"
+export SPOTIFY_CLIENT_SECRET="your_secret"
+
+## 🔧 Usage Guide
+Run Complete AI Pipeline
+cd scripts && \
+python etl_load.py && \
+python featurize.py && \
+python train_popularity.py && \
+python embeddings_recommender.py && \
+python cluster_graph.py
+
+Launch Dashboard
+cd dashboard
+streamlit run app.py
+
+
+## 🌟 Key Findings
+
+- 📈 Valence and energy are strong drivers of song popularity
+- 📉 High acousticness negatively impacts mainstream chart success
+- 🌐 Semantic clustering reveals hidden music communities and genre neighborhoods
+- 📊 Target Encoding significantly outperforms traditional one-hot encoding for high-cardinality features
+
+## 🛠️ Technologies Used
+
+### ☁️ Cloud
+- AWS Lambda
+- Amazon S3
+- AWS Glue
+- Amazon Athena
+- Amazon CloudWatch
+
+### 🤖 Machine Learning & AI
+- XGBoost
+- Sentence-BERT
+- UMAP
+- HDBSCAN
+- SHAP
+
+### 📊 Data Processing & Visualization
+- Pandas
+- NumPy
+- VADER NLP
+- NetworkX
+- Streamlit
+- Plotly
+- Matplotlib
+
+
+## 📈 Future Enhancements
+🔮 LSTM models for chart trajectory prediction
+
+🎵 CNNs on Mel-spectrograms
+
+🐳 Docker + AWS ECS deployment
+
+## 👨‍💻 Author
+Mohnish P Nair  | 🎓 M.Tech in Data Engineering | IIT Jodhpur

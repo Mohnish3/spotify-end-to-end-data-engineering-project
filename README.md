@@ -135,6 +135,8 @@ SpotFusion+/\
 ├── aws_pipeline/ # Phase I: AWS Infrastructure\
 │ ├── lambda_extract.py\
 │ ├── lambda_transform.py\
+│ ├── spotify_api_data_extract.py
+│ ├── spotify_transformation_load_function.py
 │ └── README.md\
 │\
 ├── data/\

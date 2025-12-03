@@ -34,7 +34,7 @@ What began as a **serverless AWS ETL pipeline** to archive ephemeral Spotify Top
 ## 📑 Table of Contents
 
 - [🎯 Problem Statement](#-problem-statement)
-- [🏗️ Solution Architecture](#-solution-architecture)
+- [🧩 Solution Architecture](#-solution-architecture)
   - [Phase I: AWS Data Engineering](#phase-i-aws-data-engineering)
   - [Phase II: AI & Analytics](#phase-ii-ai--analytics)
 - [🚀 Key Innovations](#-key-innovations)
@@ -47,7 +47,7 @@ What began as a **serverless AWS ETL pipeline** to archive ephemeral Spotify Top
 - [🌟 Key Findings](#-key-findings)
 - [🛠️ Technologies Used](#️-technologies-used)
 - [📈 Future Enhancements](#-future-enhancements)
-- [👨‍💻 Author](#-author)
+- [👨‍💻 Author](#author)
 
 ---
 
@@ -65,7 +65,7 @@ What began as a **serverless AWS ETL pipeline** to archive ephemeral Spotify Top
 
 ---
 
-## 🏗️ Solution Architecture
+## 🧩 Solution Architecture
 
 
 
@@ -73,7 +73,8 @@ What began as a **serverless AWS ETL pipeline** to archive ephemeral Spotify Top
 
 ### Phase I: AWS Data Engineering
 
-![Architecture Diagram](https://github.com/kushankkwal/spotify-end-to-end-data-engineering-project/blob/main/Spotify_Data_Pipeline%20.jpeg)
+![Spotify_Data_Pipeline](https://github.com/user-attachments/assets/73a741f2-b60d-4a93-b86f-4f31ea14d6fe)
+
 
 A **purely serverless, event-driven ETL pipeline**:
 
@@ -222,25 +223,36 @@ Artist & Genre encoding dominate audio features
 Module 1: 🤖 AI Recommender
 Semantic similarity search
 Context-aware playlists
+![dashboard_recommender](https://github.com/user-attachments/assets/2d65abe2-4b3e-46d7-8d6b-4ceafab7c5fb)
 
 
 Module 2: 🌌 3D Music Galaxy
 Interactive 3D UMAP visualization
 
+![dashboard_galaxy](https://github.com/user-attachments/assets/a18c1ae6-d542-4ca9-9028-bbf545504aea)
 
 
 Module 3: 📈 Market Analytics
 Trend analysis
+![dashboard_analytics1](https://github.com/user-attachments/assets/bb6b0966-5a16-4341-aabd-82791c4d6f0f)
 
 Feature correlations
 
+![dashboard_analytics2](https://github.com/user-attachments/assets/b86ba336-9d2b-49c7-a977-92ee63cc1b94)
+
+
 Module 4: 🔬 Research Outcomes
 Model metrics
+
+![dashboard_research](https://github.com/user-attachments/assets/d054b9d1-780c-4b78-8d0e-826b0dc670ed)
 
 
 Module 5: 📄 Report Export
 Auto-generated PDFs
 Executive-ready summaries
+
+![dashboard_report](https://github.com/user-attachments/assets/948604a1-9da9-4143-a6c4-d42b82591885)
+
 
 ## ⚙️ Installation & Setup
 
@@ -253,7 +265,7 @@ Executive-ready summaries
 
 ### 1️⃣ Clone Repository
 
-git clone https://github.com/Mohnish3/spotify-end-to-end-data-engineering-project.git
+git clone https://github.com/Mohnish3/spotify-end-to-end-data-engineering-project.git\
 cd SpotFusion-Plus
 
 2️⃣ Install Dependencies
@@ -319,5 +331,5 @@ streamlit run app.py
 
 🐳 Docker + AWS ECS deployment
 
-## 👨‍💻 Author
+## <a name="author"></a>👨‍💻 Author
 Mohnish P Nair  | 🎓 M.Tech in Data Engineering | IIT Jodhpur
